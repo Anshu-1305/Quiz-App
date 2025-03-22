@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Quiz App</h1>
+
+        <!-- Section to select number of questions -->
+        <div id="start-screen">
+            <label for="question-count">Select number of questions:</label>
+            <input type="number" id="question-count" min="1" max="100" value="5">
+            <button id="start-btn" class="btn">Start Quiz</button>
+        </div>
+
+        <div id="quiz-section" style="display: none;">
+            <div id="question" class="fade-in"></div>
+            <div id="answer-buttons"></div>
+            <button id="next-btn" class="btn next-btn" style="display: none;">Next</button>
+        </div>
+    </div>
+    <script type="module" src="script.js"></script>
+    <script type="module" src="quizQuestions.js"></script>
+</body>
+</html>

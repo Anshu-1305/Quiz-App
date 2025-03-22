@@ -1,0 +1,106 @@
+/* General styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Quiz container - Slide-in Animation */
+.quiz-container {
+    max-width: 500px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-20px);
+    opacity: 0;
+    animation: slideIn 0.5s ease-in-out forwards;
+}
+
+/* Button Styling */
+.btn {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Default Answer Button Color */
+.btn {
+    background-color: #6C63FF; /* Soft Purple */
+    color: white;
+}
+
+/* Button Hover Effect */
+.btn:hover {
+    transform: scale(1.05);
+    background-color: #5349d1; /* Darker Purple */
+}
+
+/* Correct Answer Effect */
+.correct {
+    background-color: #4CAF50 !important; /* Green */
+    color: white;
+    animation: popEffect 0.3s ease-in-out;
+}
+
+/* Wrong Answer Effect */
+.wrong {
+    background-color: #FF4C4C !important; /* Red */
+    color: white;
+    animation: shake 0.3s ease-in-out;
+}
+
+/* Next Button - Unique Color & Bounce Animation */
+.next-btn {
+    background-color: #FF9800 !important; /* Orange */
+    color: white;
+    font-weight: bold;
+    animation: bounce 0.5s ease-in-out infinite alternate;
+}
+
+.next-btn:hover {
+    background-color: #e08900 !important; /* Darker Orange */
+}
+
+/* Fade-in Animation for Questions */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes popEffect {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-5px); }
+}
