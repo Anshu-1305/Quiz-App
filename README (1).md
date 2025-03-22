@@ -13,9 +13,17 @@ A **modern, animated, and interactive quiz application** built using **HTML, CSS
 ✅ **Randomized Questions** – Each quiz session provides a different set of questions.  
 
 ---
-
+**Clone :** https://quiz-app-anshu-1305s-projects.vercel.app/
 ## **📸 Screenshots**  
-![Quiz App Screenshot](your-image-url-here) *(Replace with an actual screenshot URL from GitHub)*  
+main interface
+![image](https://github.com/user-attachments/assets/90bc97df-1e6f-49c8-9fba-9d2b83a91f54)
+next interface
+![image](https://github.com/user-attachments/assets/3a40256f-e623-4efd-8de0-301fce2c3aad)
+if the answer is correct
+![image](https://github.com/user-attachments/assets/7b201ca3-9ac0-4f1f-93dd-960b1a9ccc62)
+if the answer is wrong
+![image](https://github.com/user-attachments/assets/d2257099-762d-498f-8e65-c41d5b185f72)
+
 
 ---
 
