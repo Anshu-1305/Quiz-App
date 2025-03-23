@@ -16,24 +16,27 @@ let score = 0;
 // Start quiz based on user selection
 startButton.addEventListener("click", () => {
     const questionCount = parseInt(questionCountInput.value);
+    
     if (questionCount > 0 && questionCount <= allQuestions.length) {
-        selectedQuestions = allQuestions.slice(0, questionCount); // Select user-defined number of questions
+        selectedQuestions = allQuestions.sort(() => Math.random() - 0.5).slice(0, questionCount); // Shuffle and select questions
         startScreen.style.display = "none";
         quizSection.style.display = "block";
         startQuiz();
+    } else {
+        alert("Please enter a valid number of questions.");
     }
 });
 
-// Load Questions
+// Initialize the quiz
 function startQuiz() {
     currentQuestionIndex = 0;
     score = 0;
     nextButton.innerHTML = "Next";
-    nextButton.style.display = "none";
+    nextButton.style.display = "none"; // Hide Next button initially
     showQuestion();
 }
 
-// Display Question
+// Display a new question
 function showQuestion() {
     resetState();
     let currentQuestion = selectedQuestions[currentQuestionIndex];
@@ -52,9 +55,9 @@ function showQuestion() {
     });
 }
 
-// Reset state before showing new question
+// Reset answer buttons before showing a new question
 function resetState() {
-    nextButton.style.display = "none";
+    nextButton.style.display = "none"; // Hide Next button until answer is selected
     while (answerButtons.firstChild) {
         answerButtons.removeChild(answerButtons.firstChild);
     }
@@ -87,27 +90,38 @@ function selectAnswer(e) {
     nextButton.style.display = "block"; // Show next button
 }
 
-// Handle "Next" button click
-nextButton.addEventListener("click", () => {
-    currentQuestionIndex++;
-
-    if (currentQuestionIndex < selectedQuestions.length) {
+// Function to handle "Next" button click
+function handleNextQuestion() {
+    if (currentQuestionIndex < selectedQuestions.length - 1) {
+        currentQuestionIndex++;
         showQuestion();
     } else {
         showScore();
     }
-});
+}
 
-// Show final score
+// Display the final score
 function showScore() {
     resetState();
     questionElement.innerHTML = `You scored ${score} out of ${selectedQuestions.length}!`;
     nextButton.innerHTML = "Restart Quiz";
     nextButton.style.display = "block";
 
-    // Restart quiz on clicking next button
-    nextButton.onclick = () => {
-        startScreen.style.display = "block";
-        quizSection.style.display = "none";
-    };
+    // Reset event listener to restart the quiz
+    nextButton.removeEventListener("click", handleNextQuestion);
+    nextButton.addEventListener("click", restartQuiz);
 }
+
+// Restart the quiz
+function restartQuiz() {
+    startScreen.style.display = "block";
+    quizSection.style.display = "none";
+    nextButton.innerHTML = "Next";
+    
+    // Reset event listeners
+    nextButton.removeEventListener("click", restartQuiz);
+    nextButton.addEventListener("click", handleNextQuestion);
+}
+
+// Ensure Next button works properly
+nextButton.addEventListener("click", handleNextQuestion);
